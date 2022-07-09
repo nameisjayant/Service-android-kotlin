@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.yt.mynavigation">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyNavigation"
+        tools:targetApi="31">
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".BottomSheetActivity"/>
+        <activity android:name="com.yt.intentService.MyIntentServiceActivity"/>
+        <activity android:name="com.yt.services.MyServiceActivity"/>
+        <activity
+            android:name="com.yt.services.MusicActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MyNavigation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service android:name="com.yt.intentService.MyIntentService"/>
+        <service android:name="com.yt.services.MyService"/>
+        <service android:name="com.yt.services.MusicService"/>
+    </application>
+
+</manifest>
