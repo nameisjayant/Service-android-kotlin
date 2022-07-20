@@ -1,11 +1,16 @@
 package com.yt.mynavigation
 
+import android.app.Activity
+import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
 import androidx.compose.foundation.Image
@@ -18,7 +23,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.decodeBitmap
+import java.util.jar.Manifest
 
 
 @Composable
@@ -91,6 +99,39 @@ fun PickImageFromCamera() {
 
         bitmap?.let {
             Image(bitmap?.asImageBitmap()!!, contentDescription = "", modifier = Modifier.size(200.dp))
+        }
+    }
+}
+
+
+@Composable
+fun PickImageFromCameraX(context:Activity) {
+
+    val requestPermissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()){
+        when(it){
+             true -> {
+                 Log.d("main", "Permission granted")
+             }
+            false -> {
+                Log.d("main", "Permission denied")
+            }
+        }
+    }
+
+    when {
+        ContextCompat.checkSelfPermission(
+            context,
+            android.Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED -> {
+            Log.d("main", "Permission already granted")
+        }
+
+        ActivityCompat.shouldShowRequestPermissionRationale(
+            context,
+            android.Manifest.permission.CAMERA
+        ) -> {
+            requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
         }
     }
 
