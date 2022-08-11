@@ -22,24 +22,26 @@ class MusicActivity : BaseActivity() {
 
         val scaffoldState = rememberScaffoldState()
         val scope = rememberCoroutineScope()
-        Scaffold(scaffoldState = scaffoldState,
+        Scaffold(
+            scaffoldState = scaffoldState,
             drawerContent = {
-               Column(
-                   modifier = Modifier.fillMaxWidth(.5f)
-               ) {
-                   IconButton(onClick = {
-                       scope.launch {
-                           scaffoldState.drawerState.close()
-                       }
-                   }) {
-                       Icon(Icons.Default.Close, contentDescription = "", tint = Color.Blue )
-                   }
-                   Text(text = "Drawer content")
-               }
-            }, drawerGesturesEnabled = false,
+                Column(
+                    modifier = Modifier.fillMaxWidth(.5f)
+                ) {
+                    IconButton(onClick = {
+                        scope.launch {
+                            scaffoldState.drawerState.close()
+                        }
+                    }) {
+                        Icon(Icons.Default.Close, contentDescription = "", tint = Color.Blue)
+                    }
+                    Text(text = "Drawer content")
+                }
+            },
+            drawerGesturesEnabled = false,
         ) {
-         //   ShowDrawer(scaffoldState = scaffoldState)
-            CustomCheckBox()
+            //   ShowDrawer(scaffoldState = scaffoldState)
+           TextFieldLayout()
         }
 
 //        Column(
