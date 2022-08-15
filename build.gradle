@@ -4,7 +4,7 @@ buildscript {
         currentVersion = "1.0.0-rc02"
         hilt_version = '2.39.1'
         lifecycle_version = '2.5.0-beta01'
-        accompanist = '0.23.1'
+        accompanist = '0.25.0'
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
