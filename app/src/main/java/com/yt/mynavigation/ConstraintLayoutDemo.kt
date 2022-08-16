@@ -6,6 +6,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.layoutId
@@ -49,43 +50,48 @@ fun ConstraintLayoutWithConstraintSet() {
         }
     }
 
-    ConstraintLayout(
-        constraintSet = constraints,
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        var username by remember { mutableStateOf("") }
-        var password by remember { mutableStateOf("") }
-
-        TextField(
-            value = username,
-            onValueChange = {
-                username = it
-            },
-            placeholder = { Text(text = "Enter user name") },
-            modifier = Modifier
-                .layoutId("username")
-        )
-
-        TextField(
-            value = password,
-            onValueChange = {
-                password = it
-            },
-            placeholder = { Text(text = "Enter password") },
-            modifier = Modifier
-                .layoutId("password"),
-            visualTransformation = PasswordVisualTransformation()
-        )
-
-        Button(onClick = { /*TODO*/ },
-            modifier = Modifier
-                .layoutId("button")
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        ConstraintLayout(
+            constraintSet = constraints,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "Login")
+            var username by remember { mutableStateOf("") }
+            var password by remember { mutableStateOf("") }
+
+            TextField(
+                value = username,
+                onValueChange = {
+                    username = it
+                },
+                placeholder = { Text(text = "Enter user name") },
+                modifier = Modifier
+                    .layoutId("username")
+            )
+
+            TextField(
+                value = password,
+                onValueChange = {
+                    password = it
+                },
+                placeholder = { Text(text = "Enter password") },
+                modifier = Modifier
+                    .layoutId("password"),
+                visualTransformation = PasswordVisualTransformation()
+            )
+
+            Button(
+                onClick = { /*TODO*/ },
+                modifier = Modifier
+                    .layoutId("button")
+            ) {
+                Text(text = "Login")
+            }
+
         }
-
     }
-
 
 }
 
@@ -234,3 +240,4 @@ fun ConstraintExample2() {
     }
 
 }
+
