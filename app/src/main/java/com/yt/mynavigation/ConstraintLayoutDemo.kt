@@ -20,7 +20,8 @@ import androidx.constraintlayout.compose.ConstraintSet
 @Composable
 fun ConstraintLayoutDemo() {
    // ConstraintExample2()
-    ConstraintLayoutWithConstraintSet()
+  //  ConstraintLayoutWithConstraintSet()
+  //  Example()
 }
 
 @Composable
